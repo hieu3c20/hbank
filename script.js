@@ -114,10 +114,10 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
-const popupClose = document.querySelector('.popup-close')
-const insButton = document.querySelector('.instructor')
-const popupInstructions = document.querySelector('.popup-instructor')
-const popupLayout = document.querySelector('.layout')
+const popupClose = document.querySelector('.popup-close');
+const insButton = document.querySelector('.instructor');
+const popupInstructions = document.querySelector('.popup-instructor');
+const popupLayout = document.querySelector('.layout');
 
 /////////////////////////////////////////////////
 // // Functions
@@ -336,16 +336,18 @@ btnTransfer.addEventListener('click', function (e) {
     currentAccount.balance >= amount &&
     receiveAcc?.userName !== currentAccount.userName
   ) {
-    currentAccount.movements.push(-amount);
-    receiveAcc.movements.push(amount);
+    setTimeout(function () {
+      currentAccount.movements.push(-amount);
+      receiveAcc.movements.push(amount);
 
-    currentAccount.movementsDates.push(new Date().toISOString());
-    receiveAcc.movementsDates.push(new Date().toISOString());
+      currentAccount.movementsDates.push(new Date().toISOString());
+      receiveAcc.movementsDates.push(new Date().toISOString());
 
-    updateUI(currentAccount);
+      updateUI(currentAccount);
 
-    clearInterval(timer);
-    timer = startLogOutTimer();
+      clearInterval(timer);
+      timer = startLogOutTimer();
+    }, 1500);
   } else {
     labelWelcome.textContent = 'cannot transfer';
   }
@@ -404,15 +406,15 @@ btnSort.addEventListener('click', function (e) {
   }, 1000);
 });
 
-insButton.addEventListener('click', function() {
-  popupInstructions.classList.remove('hidden')
-  popupLayout.classList.remove('hidden')
-})
+insButton.addEventListener('click', function () {
+  popupInstructions.classList.remove('hidden');
+  popupLayout.classList.remove('hidden');
+});
 
-popupClose.addEventListener('click', function() {
-  popupInstructions.classList.add('hidden')
-  popupLayout.classList.add('hidden')
-})
+popupClose.addEventListener('click', function () {
+  popupInstructions.classList.add('hidden');
+  popupLayout.classList.add('hidden');
+});
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
